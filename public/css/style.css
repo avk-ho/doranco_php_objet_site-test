@@ -1,0 +1,22 @@
+.img_detail_main img{
+    width: 100%;
+}
+.img_detail{
+    height: 10em;
+}
+.img_detail img{
+    height: 100%;
+    /* object-fit: cover; */
+    /* overflow: hidden; */
+}
+.cmt{
+    /* border: 1px black solid; */
+    justify-content: center;
+}
+.cmt p{
+    margin: 10px;
+    padding: 0;
+}
+.cmt-col{
+    border: 1px black solid;
+}

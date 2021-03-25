@@ -45,12 +45,12 @@
     </button>
     </div>
 
-    <?php
-        $allprod = $prod->getAll();
-        foreach($allprod as $prod){
-    ?>
     <div class="container mt-4">
         <div class="row">
+            <?php
+            $allprod = $prod->getAll();
+            foreach($allprod as $prod){
+            ?>
             <div class="col">
                 <div class="card" style="width: 18rem;">
                     <img src="../public/img/img1.jpg" class="card-img-top" alt="...">
@@ -58,10 +58,13 @@
                         <h5 class="card-title"><?php echo $prod->nom ;?></h5>
                         <p class="card-text"><?php echo $prod->description ;?></p>
                         <p>Prix : <?php echo $prod->prix ;?></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="detail.php?id=<?php echo $prod->id ;?>" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
+            <?php
+            }
+            ?>
             <!-- <div class="col">
                 <div class="card" style="width: 18rem;">
                     <img src="../public/img/img1.jpg" class="card-img-top" alt="...">
@@ -84,9 +87,6 @@
             </div> -->
         </div>       
     </div>
-    <?php
-    }
-    ?>
     
 </body>
 </html>
