@@ -25,12 +25,23 @@
             $sth->setFetchMode(PDO::FETCH_OBJ);
             return $sth->fetch(); // retourne juste un objet
         }
+
+        function deleteById($id){
+            $sql = "DELETE FROM products WHERE id='$id'";
+            $this->conn->query($sql);
+        }
+        function modifyById($id, $col, $new_val){
+            $sql = "UPDATE products SET $col = $new_val WHERE id = '$id'";
+            $this->conn->query($sql);
+        }
+
         function getImg($id){
             $sql = "SELECT img_products.url FROM img_products INNER JOIN products ON img_products.id_prod = products.id WHERE id_prod=$id";
             $sth = $this->conn->query($sql);
             $sth->setFetchMode(PDO::FETCH_OBJ);
             return $sth->fetchAll();
         }
+
         function sendCmt(){
             $id = $_GET["id"];
             $username = $_POST["username"];

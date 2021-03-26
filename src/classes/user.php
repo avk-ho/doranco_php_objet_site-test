@@ -22,6 +22,7 @@
             // $sth->bindParam(':comment',$_POST['comment']);
         
             $sth->execute();
+            header("Location:login.php");
         }
 
         function getInfo(){
