@@ -28,11 +28,13 @@
 
         function deleteById($id){
             $sql = "DELETE FROM products WHERE id='$id'";
-            $this->conn->query($sql);
+            $sth = $this->conn->prepare($sql);
+            $sth->execute();
         }
         function modifyById($id, $col, $new_val){
             $sql = "UPDATE products SET $col = $new_val WHERE id = '$id'";
-            $this->conn->query($sql);
+            $sth = $this->conn->prepare($sql);
+            $sth->execute();
         }
 
         function getImg($id){

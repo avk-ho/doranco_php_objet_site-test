@@ -6,6 +6,7 @@
 
     $prod = new products();
     $allProd = $prod->getAll();
+    // echo $allProd;
 ?>
 
 <link href="style_admin.css" rel="stylesheet">
@@ -25,9 +26,5 @@
             <hr>
         </div>
         <?php }?>
-            <!-- <form method="post">
-                <button type="submit" name="edit">Editer les données</button>
-                <button type="submit" name="delete">Supprimer un produit</button>
-            </form> -->
     </main>
 </body>

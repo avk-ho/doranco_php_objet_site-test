@@ -10,14 +10,14 @@
     var_dump($prod->getById($id));
     if(isset($_POST["submit"])){
         $confirm = $_POST["confirm"];
-        if($confirm == "confirmer"){
+        if($confirm == "supprimer"){
             $prod->deleteById($id);
             header("Location:index.php");
         }
     }
 ?>
 <form method="post">
-    <label for="confirm">Pour confirmer, taper confirmer dans le champ suivant</label>
+    <label for="confirm">Pour supprimer, taper supprimer dans le champ suivant</label>
     <input type="text" name="confirm">
     <button type="submit" name="submit">Valider</button>
 </form>

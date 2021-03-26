@@ -4,7 +4,7 @@
 <link href="style_admin.css" rel="stylesheet">
 
 <div class="sidenav">
-    <a href="#about">Home</a>
+    <a href="index.php">Home</a>
     <a href="#services">Services</a>
     <a href="#clients">Clients</a>
     <a href="../contact.php">Contact</a>
