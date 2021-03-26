@@ -5,6 +5,9 @@
     use PDOException;
 
     class user extends database{
+        
+        const url_root = "localhost/blog/views";
+
         function register(){
             $name = $_POST["name"];
             $surname = $_POST["surname"];
@@ -20,34 +23,39 @@
         
             $sth->execute();
         }
-        function confirmPW(){
-            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-            $password_conf = password_hash($_POST["password_conf"], PASSWORD_DEFAULT);
-            if($password == $password_conf){
-                return true;
-            }
-            else{
-                return false;
-            }
+
+        function getInfo(){
+            $sql = "SELECT nom, prenom, email FROM users";
+                $sth = $this->conn->query($sql);
+                $sth->setFetchMode(PDO::FETCH_OBJ);
+                return $sth->fetch();
+                // echo "<pre>";
+                // print_r($result);
+                // echo "<pre>";
         }
-        // function allMails(){
-        //     $sql = "SELECT email FROM users";
-        //     $sth = $this->conn->query($sql);
-        //     $sth->setFetchMode(PDO::FETCH_OBJ);
-        //     return $sth->fetchAll();
-        // }
+
+        function createSession($user){
+            $_SESSION["id"] = $user->id;
+            $_SESSION["prenom"] = $user->prenom;
+            $_SESSION["nom"] = $user->nom;
+            $_SESSION["email"] = $user->email;
+            header("Location:profil.php");
+        }
+
         function login(){
             $email = $_POST["email"];
-            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-            $password_conf = password_hash($_POST["password_conf"], PASSWORD_DEFAULT);
-            if(confirmPM()){
-                $sql = "SELECT * FROM users WHERE email = $email";
+            $password = $_POST["password"];
+            $password_conf = $_POST["password_conf"];
+            if($password == $password_conf){
+                $sql = "SELECT * FROM users WHERE email ='$email'"; // '' avant $email IMPORTANT
                 $sth = $this->conn->query($sql);
                 $sth->setFetchMode(PDO::FETCH_OBJ);
                 $logs = $sth->fetch();
-                if($password == $logs->password){
-                    $connexion = true;
-                    echo "Connexion réussie.";
+                $password_hash = $logs->password;
+                if(password_verify($password, $password_hash)){
+                    // echo "Connexion réussie.";
+                    // header("Location:index.php");
+                    $this->createSession($logs);
                 }
                 else{
                     echo "Erreur. Identifiants incorrects.";
@@ -55,10 +63,9 @@
                 
             }
             else{
-                echo "The passwords do not match !";
-            }
+                echo "Les mots de passe ne correspondent pas.";
+            }          
         }
-
 
     }
 ?>

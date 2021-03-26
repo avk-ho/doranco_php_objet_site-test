@@ -26,19 +26,19 @@
     <form method="post" action="">
         <div class="row">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" class="form-control" required="required" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="row">
             <label for="exampleInputEmail1" class="form-label">Prénom</label>
-            <input type="text" class="form-control" name="surname" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" class="form-control" required="required" name="surname" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="row">
             <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+            <input type="password" class="form-control" required="required" name="password" id="exampleInputPassword1">
         </div>
         <div class="row">
             <label for="exampleInputEmail1" class="form-label">Adresse email</label>
-            <input type="email" class="form-control mb-3" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control mb-3" required="required" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <button type="submit" name="submit" class="btn btn-primary mt-8">Submit</button>
     </form>
